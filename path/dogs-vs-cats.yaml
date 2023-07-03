@@ -23,13 +23,6 @@ spec:
         ports:
         - containerPort: 6379
           name: redis
-          volumeMounts:
-      - name: azure
-        mountPath: /mnt/azure
-  volumes:
-    - name: azure
-      persistentVolumeClaim:
-        claimName: pvc-azuredisk
 ---
 apiVersion: v1
 kind: Service
@@ -75,13 +68,6 @@ spec:
         env:
         - name: REDIS
           value: "azure-vote-back"
-          volumeMounts:
-      - name: azure
-        mountPath: /mnt/azure
-  volumes:
-    - name: azure
-      persistentVolumeClaim:
-        claimName: pvc-azuredisk
 ---
 apiVersion: v1
 kind: Service
